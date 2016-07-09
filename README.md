@@ -50,7 +50,7 @@ The following properties can be configured:
 		</tr>
 		<tr>
 			<td><code>list</code></td>
-			<td>The id of the list you want to display, check out *Finding a List ID* <a href="https://developers.trello.com/get-started/start-building#create">here</a>.
+			<td>The id of the list you want to display, check out <b>Finding a List ID</b> <a href="https://developers.trello.com/get-started/start-building#create">here</a>.
 				<br> <br> This value is <b>REQUIRED</b>
 			</td>
 		</tr>
