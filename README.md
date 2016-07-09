@@ -1,6 +1,6 @@
 # Module: Trello
 The `Trello` module displays all cards in a specific Trello list.
-Applications could be: displaying a `TODO` list, showing notes, or important information which needs to be shared between roommates.
+Applications could be: displaying a TODO list, showing notes, or important information which needs to be shared between roommates.
 Get your required API Key and Token [here](https://trello.com/app-key), or see 'Configuration Options' for more details.
 Also find your list id as described [here](https://developers.trello.com/get-started/start-building#create) below *Finding a List ID*.
 
