@@ -4,13 +4,13 @@ Applications can be: displaying a TODO list, showing notes, or important informa
 
 ## Installation
 
-1. Execute the following commands from your `MagicMirror/modules` folder:
+  1\. Execute the following commands from your `MagicMirror/modules` folder:
 ```bash
 git clone https://github.com/Jopyth/MMM-Trello.git # clone this repository
 cd MMM-Trello # navigate into the folder
 npm install # install dependencies
 ```
-2. Add the module to your `config/config.js` file (see below for details).
+  2\. Add the module to your `config/config.js` file (see below for details).
 
 ## Using the module
 
