@@ -1,12 +1,25 @@
 # Module: Trello
-The `Trello` module displays all cards in a specific Trello list.
-Applications could be: displaying a TODO list, showing notes, or important information which needs to be shared between roommates.
-Get your required API Key and Token [here](https://trello.com/app-key), or see 'Configuration Options' for more details.
-Also find your list id as described [here](https://developers.trello.com/get-started/start-building#create) below *Finding a List ID*.
+The `Trello` module displays all cards in a specific [Trello](https://trello.com/) list, in a style similar to the [Newsfeed](https://github.com/MichMich/MagicMirror/tree/master/modules/default/newsfeed) (showing one card at a time).
+Applications can be: displaying a TODO list, showing notes, or important information which needs to be shared between roommates.
+
+## Installation
+
+1. Execute the following commands from your `MagicMirror/modules` folder:
+```bash
+git clone https://github.com/Jopyth/MMM-Trello.git # clone this repository
+cd MMM-Trello # navigate into the folder
+npm install # install dependencies
+```
+2. Add the module to your `config/config.js` file (see below for details).
 
 ## Using the module
 
-To use this module, add it to the modules array in the `config/config.js` file:
+To use this module you will need a trello API Key, an access token, and your list identifier.
+
+Get your required API Key and Token [here](https://trello.com/app-key), or see 'Configuration Options' for more details.
+Also find your list id as described [here](https://developers.trello.com/get-started/start-building#create) below *Finding a List ID*.
+
+Then, add it to the modules array in the `config/config.js` file:
 ````javascript
 modules: [
     {
