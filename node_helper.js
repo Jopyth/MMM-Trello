@@ -59,11 +59,25 @@ module.exports = NodeHelper.create({
             if (error)
             {
                 self.sendSocketNotification("TRELLO_ERROR", error);
+                return;
             }
-            else
+            for (var card in data)
             {
-                self.sendSocketNotification("LIST_CONTENT", data);
+                for (var checklist in data[card].idChecklists)
+                {
+                    const checklistId = data[card].idChecklists[checklist];
+                    const checklistPath = "/1/checklists/" + checklistId;
+                    self.trello.get(checklistPath, {}, function(error, checklistData) {
+                        if (error)
+                        {
+                            console.log(error);
+                            return;
+                        }
+                        self.sendSocketNotification("CHECK_LIST_CONTENT", checklistData);
+                    });
+                }
             }
+            self.sendSocketNotification("LIST_CONTENT", data);
         });
     },
 });
