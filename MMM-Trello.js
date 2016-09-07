@@ -20,7 +20,7 @@ Module.register("MMM-Trello", {
 		list: "",
 		showLineBreaks: false,
 		showDueDate: true,
-		showChecklists: false,
+		showChecklists: true,
 		showChecklistTitle: false
 	},
 

@@ -95,6 +95,34 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>true</code>
 			</td>
 		</tr>
+		<tr>
+			<td><code>showLineBreaks</code></td>
+			<td>Display line breaks in the description? Needs more space if true.<br>
+				<br><b>Possible values:</b> <code>true</code> or <code>false</code>
+				<br><b>Default value:</b> <code>false</code>
+			</td>
+		</tr>
+		<tr>
+			<td><code>showDueDate</code></td>
+			<td>Whether to show the due date of cards, if they have one.<br>
+				<br><b>Possible values:</b> <code>true</code> or <code>false</code>
+				<br><b>Default value:</b> <code>true</code>
+			</td>
+		</tr>
+		<tr>
+			<td><code>showChecklists</code></td>
+			<td>Whether to show checklists of cards.<br>
+				<br><b>Possible values:</b> <code>true</code> or <code>false</code>
+				<br><b>Default value:</b> <code>true</code>
+			</td>
+		</tr>
+		<tr>
+			<td><code>showChecklistTitle</code></td>
+			<td>Whether to show the title of each checklist before the actual check list.<br>
+				<br><b>Possible values:</b> <code>true</code> or <code>false</code>
+				<br><b>Default value:</b> <code>false</code>
+			</td>
+		</tr>
 	</tbody>
 </table>
 
