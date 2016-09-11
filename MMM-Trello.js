@@ -88,7 +88,8 @@ Module.register("MMM-Trello", {
 	getTranslations: function() {
 		return {
 			en: "translations/en.json",
-			de: "translations/de.json"
+			de: "translations/de.json",
+			pl: "translations/pl.json",
 		};
 	},
 
