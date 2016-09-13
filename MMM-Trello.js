@@ -45,7 +45,7 @@ Module.register("MMM-Trello", {
 		this.requestUpdate();
 		this.scheduleUpdateRequestInterval();
 
-		this.pause = false;
+		this.pause = true;
 	},
 
 	/* scheduleVisualUpdateInterval()
@@ -250,11 +250,11 @@ Module.register("MMM-Trello", {
 		if (notification === "USER_PRESENCE") {
 			if (payload === true)
 			{
-				this.pause = true;
+				this.pause = false;
 			}
 			else
 			{
-				this.pause = false;
+				this.pause = true;
 			}
 		}
 	},
