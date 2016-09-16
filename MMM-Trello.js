@@ -177,7 +177,7 @@ Module.register("MMM-Trello", {
 			}
 			else
 			{
-				wrapper.innerHTML = this.translate("LOADING");
+				wrapper.innerHTML = "<span class='small fa fa-refresh fa-spin fa-fw'></span>"
 				wrapper.className = "small dimmed";
 			}
 		}
@@ -226,7 +226,7 @@ Module.register("MMM-Trello", {
 			}
 			else
 			{
-				wrapper.innerHTML = this.translate("LOADING");
+				wrapper.innerHTML = "<span class='small fa fa-refresh fa-spin fa-fw'></span>"
 				wrapper.className = "small dimmed";
 			}
 		}
