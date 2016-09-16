@@ -45,7 +45,7 @@ Module.register("MMM-Trello", {
 		this.requestUpdate();
 		this.scheduleUpdateRequestInterval();
 
-		this.pause = true;
+		this.pause = false;
 	},
 
 	/* scheduleVisualUpdateInterval()
