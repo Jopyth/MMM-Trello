@@ -237,7 +237,7 @@ Module.register("MMM-Trello", {
 	 * request a list content update
 	 */
 	requestUpdate: function() {
-		this.sendSocketNotification("REQUEST_LIST_CONTENT", { list: this.config.list });
+		this.sendSocketNotification("REQUEST_LIST_CONTENT", { list: this.config.list, id: this.identifier });
 	},
 
 	notificationReceived: function(notification, payload, sender) {
@@ -246,6 +246,11 @@ Module.register("MMM-Trello", {
 
 	// Override socket notification handler.
 	socketNotificationReceived: function(notification, payload) {
+		if (payload.id !== this.identifier) {
+			// not for this module
+			return;
+		}
+
 		if (notification === "TRELLO_ERROR") {
 			this.errorMessage = "Error " + payload.statusCode + "(" + payload.statusMessage + "): " + payload.responseBody;
 			Log.error(this.errorMessage);
@@ -259,7 +264,7 @@ Module.register("MMM-Trello", {
 		if (notification === "LIST_CONTENT") {
 			this.error = false;
 
-			this.listContent = payload;
+			this.listContent = payload.data;
 
 			if (!this.loaded) {
 				this.scheduleVisualUpdateInterval();
@@ -267,7 +272,7 @@ Module.register("MMM-Trello", {
 			}
 		}
 		if (notification === "CHECK_LIST_CONTENT") {
-			this.checklistData[payload.id] = payload;
+			this.checklistData[payload.data.id] = payload.data;
 		}
 	},
 });

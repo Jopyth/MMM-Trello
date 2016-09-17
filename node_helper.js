@@ -34,10 +34,11 @@ module.exports = NodeHelper.create({
 
         if (notification === "REQUEST_LIST_CONTENT") {
             const list = payload.list;
+            const id = payload.id;
 
             if (self.trello)
             {
-                self.retrieveListContent(list);
+                self.retrieveListContent(list, id);
             }
         }
     },
@@ -50,7 +51,7 @@ module.exports = NodeHelper.create({
     },
 
     // retrieve list content
-    retrieveListContent: function(list) {
+    retrieveListContent: function(list, id) {
         var self = this;
 
         const path = "/1/lists/" + list + "/cards";
@@ -73,11 +74,11 @@ module.exports = NodeHelper.create({
                             console.log(error);
                             return;
                         }
-                        self.sendSocketNotification("CHECK_LIST_CONTENT", checklistData);
+                        self.sendSocketNotification("CHECK_LIST_CONTENT", {id: id, data: checklistData});
                     });
                 }
             }
-            self.sendSocketNotification("LIST_CONTENT", data);
+            self.sendSocketNotification("LIST_CONTENT", {id: id, data: data});
         });
     },
 });
