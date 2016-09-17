@@ -56,10 +56,7 @@ Module.register("MMM-Trello", {
 
 		self.updateDom(self.config.animationSpeed);
 
-		setInterval(function() {
-			if (self.pause) {
-				return;
-			}
+		this.addAutoSuspendingInterval(function() {
 			self.activeItem++;
 			self.updateDom(self.config.animationSpeed);
 		}, this.config.updateInterval);
@@ -71,11 +68,7 @@ Module.register("MMM-Trello", {
 	scheduleUpdateRequestInterval: function() {
 		var self = this;
 
-		setInterval(function() {
-			if (self.pause) {
-				return;
-			}
-
+		this.addAutoSuspendingInterval(function() {
 			if (self.retry)
 			{
 				self.requestUpdate();
@@ -248,16 +241,7 @@ Module.register("MMM-Trello", {
 	},
 
 	notificationReceived: function(notification, payload, sender) {
-		if (notification === "USER_PRESENCE") {
-			if (payload === true)
-			{
-				this.pause = false;
-			}
-			else
-			{
-				this.pause = true;
-			}
-		}
+		this.checkUserPresence(notification, payload, sender);
 	},
 
 	// Override socket notification handler.
