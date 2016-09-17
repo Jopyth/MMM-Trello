@@ -85,7 +85,7 @@ Module.register("MMM-Trello", {
 
 	// Define required styles.
 	getStyles: function() {
-		return ["font-awesome.css"];
+		return ["font-awesome.css", "MMM-Trello.css"];
 	},
 
 	// Define required scripts.
@@ -165,6 +165,7 @@ Module.register("MMM-Trello", {
 
 				if (this.config.showChecklists) {
 					var checklistWrapper = document.createElement("div");
+					checklistWrapper.className = "checklist-wrapper";
 					this.getChecklistDom(checklistWrapper);
 					wrapper.appendChild(checklistWrapper);
 				}
@@ -211,7 +212,7 @@ Module.register("MMM-Trello", {
 				for (var item in checklist.checkItems)
 				{
 					var itemWrapper = document.createElement("div");
-					itemWrapper.className = "small light";
+					itemWrapper.className = "small light checklist-item";
 
 					var itemSymbol =  document.createElement("span");
 					itemSymbol.className = "fa " + SYMBOL[checklist.checkItems[item].state];
