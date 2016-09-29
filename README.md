@@ -156,7 +156,7 @@ Please check below if this is a known error, if not, feel free to post in the [T
 
 |Error|Possible Solution|
 |-----|-----|
-| Error 404(Not Found): model not found | This can happen when you accidentally take the wrong id. Go through **Finding a list id** [here](https://developers.trello.com/get-started/start-building#create) again. Make sure to look for the cryptic number after **idList**, and do not take the first id (that is the card id) in the *.json*.  |
+| Error 404(Not Found): model not found | This can happen when you accidentally take the wrong id. Go through **Finding a list id** [here](#finding-a-list-id) again. Make sure to look for the cryptic number after **idList**, and do not take the first id (that is the card id) in the *.json*.  |
 | Error 400(api_key is empty) | Enter your api_key (see Configuration Options). |
 | Error 400(Bad Request) invalid id | Your list id is not correct. Maybe you forgot a symbol? |
 | Error 401(Unauthorized) unauthorized board permission requested | Something is wrong with your token (see [Configuration Options](#configuration-options)). |
