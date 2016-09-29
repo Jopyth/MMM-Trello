@@ -59,6 +59,7 @@ module.exports = NodeHelper.create({
         self.trello.get(path, {}, function(error, data) {
             if (error)
             {
+                console.log(error);
                 self.sendSocketNotification("TRELLO_ERROR", error);
                 return;
             }
