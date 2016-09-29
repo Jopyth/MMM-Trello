@@ -18,7 +18,7 @@ module.exports = NodeHelper.create({
         self.token = ""
         self.list = ""
 
-        self.trello = false;
+        self.trelloConnections = {};
     },
 
     // Subclass socketNotificationReceived received.
@@ -26,41 +26,46 @@ module.exports = NodeHelper.create({
         var self = this;
 
         if (notification === "TRELLO_CONFIG") {
-            self.api_key = payload.api_key;
-            self.token = payload.token;
-
-            self.createTrelloConnection();
+            self.createTrelloConnection(payload.id, payload.api_key, payload.token);
         }
 
         if (notification === "REQUEST_LIST_CONTENT") {
             const list = payload.list;
             const id = payload.id;
 
-            if (self.trello)
-            {
-                self.retrieveListContent(list, id);
-            }
+            self.retrieveListContent(list, id);
         }
     },
 
     // create trello connection
-    createTrelloConnection: function() {
+    createTrelloConnection: function(id, key, token) {
         var self = this;
 
-        self.trello = new Trello(self.api_key, self.token);
+        if (key === "")
+        {
+            var error = {statusCode: 400, statusMessage: "api_key is empty", responseBody: "Please add it."};
+            self.sendSocketNotification("TRELLO_ERROR", {id: id, error: error});
+            return;
+        }
+
+        self.trelloConnections[id] = new Trello(key, token);
     },
 
     // retrieve list content
     retrieveListContent: function(list, id) {
         var self = this;
 
+        if (!self.trelloConnections[id]) {
+            return;
+        }
+
         const path = "/1/lists/" + list + "/cards";
 
-        self.trello.get(path, {}, function(error, data) {
+        self.trelloConnections[id].get(path, {}, function(error, data) {
             if (error)
             {
                 console.log(error);
-                self.sendSocketNotification("TRELLO_ERROR", error);
+                self.sendSocketNotification("TRELLO_ERROR", {id: id, error: error});
                 return;
             }
             for (var card in data)
@@ -69,7 +74,7 @@ module.exports = NodeHelper.create({
                 {
                     const checklistId = data[card].idChecklists[checklist];
                     const checklistPath = "/1/checklists/" + checklistId;
-                    self.trello.get(checklistPath, {}, function(error, checklistData) {
+                    self.trelloConnections[id].get(checklistPath, {}, function(error, checklistData) {
                         if (error)
                         {
                             console.log(error);

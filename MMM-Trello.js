@@ -238,7 +238,7 @@ Module.register("MMM-Trello", {
 	 * intializes trello backend
 	 */
 	setTrelloConfig: function() {
-		this.sendSocketNotification("TRELLO_CONFIG", { api_key: this.config.api_key, token: this.config.token });
+		this.sendSocketNotification("TRELLO_CONFIG", { id: this.identifier, api_key: this.config.api_key, token: this.config.token });
 	},
 
 	/* requestUpdate()
@@ -263,20 +263,21 @@ Module.register("MMM-Trello", {
 
 	// Override socket notification handler.
 	socketNotificationReceived: function(notification, payload) {
+		console.log(payload);
+
 		if (payload.id !== this.identifier) {
 			// not for this module
 			return;
 		}
 
 		if (notification === "TRELLO_ERROR") {
-			this.errorMessage = "Error " + payload.statusCode + "(" + payload.statusMessage + "): " + payload.responseBody;
+			this.errorMessage = "Error " + payload.error.statusCode + "(" + payload.error.statusMessage + "): " + payload.error.responseBody;
 			Log.error(this.errorMessage);
 
-			if (payload.statusCode == 401 || payload.statusCode == 400) {
-				this.error = true;
-				this.retry = false;
-				this.updateDom(self.config.animationSpeed);
-			}
+			this.error = true;
+			this.retry = false;
+
+			this.updateDom(self.config.animationSpeed);
 		}
 		if (notification === "LIST_CONTENT") {
 			this.error = false;
