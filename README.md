@@ -152,7 +152,7 @@ The first **id** in the *.json* is not the id of the list you are searching for,
 
 ### I have a weird error, what should I do?
 
-Please check below if this is a known error, if not, feel free to post in the [Troubleshooting https://forum.magicmirror.builders/category/29/troubleshooting](https://forum.magicmirror.builders/category/29/troubleshooting) of the Forum.
+Please check below if this is a known error, if not, feel free to post in the [Troubleshooting Section](https://forum.magicmirror.builders/category/29/troubleshooting) of the Forum.
 
 |Error|Possible Solution|
 |-----|-----|
