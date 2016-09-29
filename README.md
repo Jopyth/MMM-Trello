@@ -2,8 +2,8 @@
 The `Trello` module displays all cards in a specific [Trello](https://trello.com/) list, in a style similar to the [Newsfeed](https://github.com/MichMich/MagicMirror/tree/master/modules/default/newsfeed) (showing one card at a time).
 Applications can be: displaying a TODO list, showing notes, or important information which needs to be shared between roommates.
 
-!(Your card on trello.com)[/.github/trellocard.png?raw=true] 
-!(Your card on the mirror)[/.github/mirrorcard.png?raw=true]
+![Your card on trello.com](/.github/trellocard.png?raw=true)
+![Your card on the mirror](/.github/mirrorcard.png?raw=true)
 
 ## Installation
 
