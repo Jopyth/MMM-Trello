@@ -24,7 +24,6 @@ Also find your list id as described [here](https://developers.trello.com/get-sta
 
 Then, add it to the modules array in the `config/config.js` file:
 ````javascript
-modules: [
     {
         module: 'MMM-Trello',
         position: 'bottom_center', // This can be any of the regions, best results in center regions.
@@ -34,8 +33,7 @@ modules: [
             token: "INSERT_YOUR_TOKEN",
             list: "INSERT_YOUR_LIST_ID"
         }
-    }
-]
+    },
 ````
 
 ## Configuration options
