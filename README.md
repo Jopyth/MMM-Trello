@@ -124,6 +124,13 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>false</code>
 			</td>
 		</tr>
+		<tr>
+			<td><code>wholeList</code></td>
+			<td>For Trello list containing only simple title only cards, it may be more appropriate to see the full list of cards rather than one at a time.  Setting <code>wholeList</code> to <code>true</code> will show all cards in the list at the same time.  This will be ugly for complex cards.<br>
+				<br><b>Possible values:</b> <code>true</code> or <code>false</code>
+				<br><b>Default value:</b> <code>false</code>
+			</td>
+		</tr>
 	</tbody>
 </table>
 
