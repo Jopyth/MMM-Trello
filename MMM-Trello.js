@@ -21,7 +21,8 @@ Module.register("MMM-Trello", {
 		showLineBreaks: false,
 		showDueDate: true,
 		showChecklists: true,
-		showChecklistTitle: false
+		showChecklistTitle: false,
+		wholeList: false
 	},
 
 	// Define start sequence.
@@ -39,6 +40,10 @@ Module.register("MMM-Trello", {
 		this.error = false;
 		this.errorMessage = "";
 		this.retry = true;
+
+        if (this.config.wholeList === true) {
+            this.config.updateInterval = this.config.reloadInterval;
+        }
 
 		this.setTrelloConfig();
 
@@ -117,58 +122,60 @@ Module.register("MMM-Trello", {
 			}
 			else
 			{
-				if (this.config.showTitle || this.config.showDueDate) {
-					var name = document.createElement("div");
-					name.className = "bright medium light";
+				var startat = 0;
+				var endat = this.listContent.length - 1;
+				if (!this.config.wholeList) {
+					startat = this.activeItem;
+					endat = this.activeItem;
+				}
+				for (card = startat; card <= endat; card++) {
+					if (this.config.showTitle || this.config.showDueDate) {
+						var name = document.createElement("div");
+						name.className = "bright medium light";
 
-					content = ""
-					if (this.config.showTitle)
-					{
-						content = this.listContent[this.activeItem].name;
-					}
-
-					if (this.config.showDueDate && this.listContent[this.activeItem].due)
-					{
-						if (this.config.showTitle)
-						{
-							content += " (" + moment(this.listContent[this.activeItem].due).fromNow() + ")";
+						content = ""
+						if (this.config.showTitle) {
+							content = this.listContent[card].name;
 						}
-						else
-						{
-							content += moment(this.listContent[this.activeItem].due).fromNow() + ":";
+
+						if (this.config.showDueDate && this.listContent[card].due) {
+							if (this.config.showTitle) {
+								content += " (" + moment(this.listContent[card].due).fromNow() + ")";
+							}
+							else {
+								content += moment(this.listContent[card].due).fromNow() + ":";
+							}
+						}
+
+						name.innerHTML = content;
+
+						wrapper.appendChild(name);
+					}
+					var desc = document.createElement("div");
+					desc.className = "small light";
+
+					content = this.listContent[card].desc;
+
+					if (this.config.showLineBreaks) {
+						var lines = content.split('\n');
+
+						for (var i in lines) {
+							var lineElement = document.createElement("div");
+							lineElement.innerHTML = lines[i];
+							desc.appendChild(lineElement);
 						}
 					}
-
-					name.innerHTML = content;
-
-					wrapper.appendChild(name);
-				}
-				var desc = document.createElement("div");
-				desc.className = "small light";
-
-				content = this.listContent[this.activeItem].desc;
-
-				if (this.config.showLineBreaks)
-				{
-					var lines = content.split('\n');
-
-					for (var i in lines) {
-						var lineElement = document.createElement("div");
-						lineElement.innerHTML = lines[i];
-						desc.appendChild(lineElement);
+					else {
+						desc.innerHTML = content;
 					}
-				}
-				else
-				{
-					desc.innerHTML = content;
-				}
-				wrapper.appendChild(desc);
+					wrapper.appendChild(desc);
 
-				if (this.config.showChecklists) {
-					var checklistWrapper = document.createElement("div");
-					checklistWrapper.className = "checklist-wrapper";
-					this.getChecklistDom(checklistWrapper);
-					wrapper.appendChild(checklistWrapper);
+					if (this.config.showChecklists) {
+						var checklistWrapper = document.createElement("div");
+						checklistWrapper.className = "checklist-wrapper";
+						this.getChecklistDom(checklistWrapper, card);
+						wrapper.appendChild(checklistWrapper);
+					}
 				}
 			}
 		} else {
@@ -190,13 +197,13 @@ Module.register("MMM-Trello", {
 	/* getChecklistDom()
 	 * return the dom for all checklists on current card
 	 */
-	getChecklistDom: function(wrapper) {
+	getChecklistDom: function(wrapper, card) {
 		const SYMBOL = Object.freeze({
 			"incomplete" : "fa-square-o",
 			"complete" : "fa-check-square-o"
 		})
 
-		var checklistIDs = this.listContent[this.activeItem].idChecklists
+		var checklistIDs = this.listContent[card].idChecklists
 		for (var id in checklistIDs)
 		{
 			if (checklistIDs[id] in this.checklistData)
