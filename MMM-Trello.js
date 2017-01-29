@@ -292,8 +292,8 @@ Module.register("MMM-Trello", {
 			this.listContent = payload.data;
 
 			if (!this.loaded) {
-				this.scheduleVisualUpdateInterval();
 				this.loaded = true;
+				this.scheduleVisualUpdateInterval();
 			}
 		}
 		if (notification === "CHECK_LIST_CONTENT") {
