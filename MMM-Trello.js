@@ -103,7 +103,7 @@ Module.register("MMM-Trello", {
 		return {
 			en: "translations/en.json",
 			de: "translations/de.json",
-			pl: "translations/pl.json",
+			pl: "translations/pl.json"
 		};
 	},
 
@@ -133,7 +133,7 @@ Module.register("MMM-Trello", {
 						var name = document.createElement("div");
 						name.className = "bright medium light";
 
-						content = ""
+						content = "";
 						if (this.config.showTitle) {
 							content = this.listContent[card].name;
 						}
@@ -186,7 +186,7 @@ Module.register("MMM-Trello", {
 			}
 			else
 			{
-				wrapper.innerHTML = "<span class='small fa fa-refresh fa-spin fa-fw'></span>"
+				wrapper.innerHTML = "<span class='small fa fa-refresh fa-spin fa-fw'></span>";
 				wrapper.className = "small dimmed";
 			}
 		}
@@ -201,9 +201,9 @@ Module.register("MMM-Trello", {
 		const SYMBOL = Object.freeze({
 			"incomplete" : "fa-square-o",
 			"complete" : "fa-check-square-o"
-		})
+		});
 
-		var checklistIDs = this.listContent[card].idChecklists
+		var checklistIDs = this.listContent[card].idChecklists;
 		for (var id in checklistIDs)
 		{
 			if (checklistIDs[id] in this.checklistData)
@@ -235,7 +235,7 @@ Module.register("MMM-Trello", {
 			}
 			else
 			{
-				wrapper.innerHTML = "<span class='small fa fa-refresh fa-spin fa-fw'></span>"
+				wrapper.innerHTML = "<span class='small fa fa-refresh fa-spin fa-fw'></span>";
 				wrapper.className = "small dimmed";
 			}
 		}
@@ -259,12 +259,9 @@ Module.register("MMM-Trello", {
 		if (notification === "USER_PRESENCE") {
 			if (payload === true)
 			{
-				this.pause = false;
+				return !payload;
 			}
-			else
-			{
-				this.pause = true;
-			}
+			return true;
 		}
 	},
 
@@ -299,5 +296,5 @@ Module.register("MMM-Trello", {
 		if (notification === "CHECK_LIST_CONTENT") {
 			this.checklistData[payload.data.id] = payload.data;
 		}
-	},
+	}
 });
