@@ -29,7 +29,7 @@ Module.register("MMM-Trello", {
 	start: function() {
 		Log.info("Starting module: " + this.name);
 
-		moment.locale(config.language);
+		moment.locale(this.config.language);
 
 		this.listContent = [];
 		this.checklistData = {};
@@ -116,14 +116,13 @@ Module.register("MMM-Trello", {
 		}
 
 		if (this.loaded) {
-			if (this.listContent.length == 0) {
+			if (this.listContent.length === 0) {
 				wrapper.innerHTML = this.translate("NO_CARDS");
 				wrapper.className = "small dimmed";
 			}
 			else
 			{
-				var startat = 0;
-				var endat = this.listContent.length - 1;
+				var content, card, startat = 0, endat = this.listContent.length - 1;
 				if (!this.config.wholeList) {
 					startat = this.activeItem;
 					endat = this.activeItem;
@@ -281,7 +280,7 @@ Module.register("MMM-Trello", {
 			this.error = true;
 			this.retry = false;
 
-			this.updateDom(self.config.animationSpeed);
+			this.updateDom(this.config.animationSpeed);
 		}
 		if (notification === "LIST_CONTENT") {
 			this.error = false;
