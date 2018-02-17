@@ -96,6 +96,13 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>true</code>
 			</td>
 		</tr>
+    <tr>
+      <td><code>showDescription</code></td>
+      <td>Whether to show the description of the card.<br>
+        <br><b>Possible values:</b> <code>true</code> or <code>false</code>
+        <br><b>Default value:</b> <code>true</code>
+      </td>
+    </tr>
 		<tr>
 			<td><code>showLineBreaks</code></td>
 			<td>Display line breaks in the description? Needs more space if true.<br>
