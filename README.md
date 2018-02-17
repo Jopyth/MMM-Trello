@@ -96,6 +96,13 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>true</code>
 			</td>
 		</tr>
+    <tr>
+			<td><code>isCompleted</code></td>
+			<td>If list symbolizes a set of completed tasks then<br>enabling this option will strike-out titles.<br>
+				<br><b>Possible values:</b> <code>true</code> or <code>false</code>
+				<br><b>Default value:</b> <code>false</code>
+			</td>
+		</tr>
 		<tr>
 			<td><code>showLineBreaks</code></td>
 			<td>Display line breaks in the description? Needs more space if true.<br>
