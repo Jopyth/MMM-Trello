@@ -20,6 +20,7 @@ Module.register("MMM-Trello", {
         list: "",
         showLineBreaks: false,
         showDueDate: true,
+        showDescription: true,
         showChecklists: true,
         showChecklistTitle: false,
         wholeList: false,
@@ -149,25 +150,25 @@ Module.register("MMM-Trello", {
 
                         wrapper.appendChild(name);
                     }
-                    var desc = document.createElement("div");
-                    desc.className = "small light " + (this.config.isCompleted ? "is-completed dimmed" : "");
+                    if(this.config.showDescription){
+                        var desc = document.createElement("div");
+                        desc.className = "small light " + (this.config.isCompleted ? "is-completed dimmed" : "");
 
-                    content = this.listContent[card].desc;
+                        content = this.listContent[card].desc;
 
-                    if (this.config.showLineBreaks) {
-                        var lines = content.split('\n');
-
-                        for (var i in lines) {
-                            var lineElement = document.createElement("div");
-                            lineElement.innerHTML = lines[i];
-                            desc.appendChild(lineElement);
+                        if (this.config.showLineBreaks) {
+                            var lines = content.split('\n');
+                            for (var i in lines) {
+                                var lineElement = document.createElement("div");
+                                lineElement.innerHTML = lines[i];
+                                desc.appendChild(lineElement);
+                            }
                         }
+                        else {
+                            desc.innerHTML = content;
+                        }
+                        wrapper.appendChild(desc);
                     }
-                    else {
-                        desc.innerHTML = content;
-                    }
-                    wrapper.appendChild(desc);
-
                     if (this.config.showChecklists) {
                         var checklistWrapper = document.createElement("div");
                         checklistWrapper.className = "checklist-wrapper";

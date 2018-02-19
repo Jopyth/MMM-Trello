@@ -97,6 +97,12 @@ The following properties can be configured:
 			</td>
 		</tr>
     <tr>
+      <td><code>showDescription</code></td>
+      <td>Whether to show the description of the card.<br>
+        <br><b>Possible values:</b> <code>true</code> or <code>false</code>
+        <br><b>Default value:</b> <code>true</code>
+      </td>
+    </tr>
 			<td><code>isCompleted</code></td>
 			<td>If list symbolizes a set of completed tasks then<br>enabling this option will strike-out titles.<br>
 				<br><b>Possible values:</b> <code>true</code> or <code>false</code>
