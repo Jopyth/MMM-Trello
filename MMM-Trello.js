@@ -23,7 +23,8 @@ Module.register("MMM-Trello", {
         showDescription: true,
         showChecklists: true,
         showChecklistTitle: false,
-        wholeList: false
+        wholeList: false,
+        isCompleted: false
     },
 
     // Define start sequence.
@@ -103,6 +104,7 @@ Module.register("MMM-Trello", {
         return {
             en: "translations/en.json",
             de: "translations/de.json",
+            sv: "translations/sv.json",
             pl: "translations/pl.json"
         };
     },
@@ -128,7 +130,7 @@ Module.register("MMM-Trello", {
                 for (card = startat; card <= endat; card++) {
                     if (this.config.showTitle || this.config.showDueDate) {
                         var name = document.createElement("div");
-                        name.className = "bright medium light";
+                        name.className = "medium light " + (this.config.isCompleted ? "is-completed" : "bright");
 
                         content = "";
                         if (this.config.showTitle) {
@@ -150,7 +152,7 @@ Module.register("MMM-Trello", {
                     }
                     if(this.config.showDescription){
                         var desc = document.createElement("div");
-                        desc.className = "small light description";
+                        desc.className = "small light " + (this.config.isCompleted ? "is-completed dimmed" : "");
 
                         content = this.listContent[card].desc;
 

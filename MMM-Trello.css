@@ -5,3 +5,7 @@
 .checklist-item {
     text-align: left;
 }
+
+.is-completed {
+    text-decoration: line-through;
+}
