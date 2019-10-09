@@ -168,6 +168,14 @@ The first **id** in the *.json* is not the id of the list you are searching for,
 
 ## FAQ:
 
+### How can I change the font size?
+
+To change the font size of items in the list, navigate to the MMM-Trello.css file (located in MagicMirror/modules/MMM-Trello). Add the following line with the desired font size <code>font-size:45px;</code> below <code>.checklist-item</code>. This overrides the default size.
+
+To update the default font sizes, open the main.css file, locate the section with Default styles. Update the px to the desired font size ex: <code>.small {font-size: 15px; }</code>.
+
+To change the default font colors, open the main.css file, locate the section with Default styles and update the colors for <code> dimmed, normal, bright</code>.
+
 ### I have a weird error, what should I do?
 
 Please check below if this is a known error, if not, feel free to post in the [Troubleshooting Section](https://forum.magicmirror.builders/category/29/troubleshooting) of the Forum.
