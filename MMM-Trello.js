@@ -24,7 +24,8 @@ Module.register("MMM-Trello", {
         showChecklists: true,
         showChecklistTitle: false,
         wholeList: false,
-        isCompleted: false
+        isCompleted: false,
+        scaleFactor: 1.0
     },
 
     // Define start sequence.
@@ -112,6 +113,9 @@ Module.register("MMM-Trello", {
     // Override dom generator.
     getDom: function () {
         var wrapper = document.createElement("div");
+
+        // Scale the element
+        wrapper.style.transform = "scale(" + this.config.scaleFactor + ")"
 
         if (this.activeItem >= this.listContent.length) {
             this.activeItem = 0;

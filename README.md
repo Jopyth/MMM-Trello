@@ -144,6 +144,13 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>false</code>
 			</td>
 		</tr>
+		<tr>
+			<td><code>scaleFactor</code></td>
+			<td>Scale the module to be larger or smaller.<br>
+				<br><b>Possible values:</b> any <code>float</code>
+				<br><b>Default value:</b> <code>1.0</code>
+			</td>
+		</tr>
 	</tbody>
 </table>
 
