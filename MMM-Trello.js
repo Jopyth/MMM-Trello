@@ -24,7 +24,8 @@ Module.register("MMM-Trello", {
         showChecklists: true,
         showChecklistTitle: false,
         wholeList: false,
-        isCompleted: false
+        isCompleted: false,
+        numberOfCardsToDisplay: 1, // to be able to show more than 1, but not the whole list
     },
 
     // Define start sequence.
@@ -127,6 +128,16 @@ Module.register("MMM-Trello", {
                     startat = this.activeItem;
                     endat = this.activeItem;
                 }
+
+                // Adding code here to be able to show n number of cards (more than 1, but not the whole list)
+                if (this.config.numberOfCardsToDisplay > 1 && this.config.numberOfCardsToDisplay > this.listContent.length) {
+                  endat = this.listContent.length - 1;
+                }
+                if (this.config.numberOfCardsToDisplay > 1 && this.config.numberOfCardsToDisplay <= this.listContent.length) {
+                  endat = this.config.numberOfCardsToDisplay - 1;
+                }
+                // end of added code to handle displaying a n number of cards
+
                 for (card = startat; card <= endat; card++) {
                     if (this.config.showTitle || this.config.showDueDate) {
                         var name = document.createElement("div");
