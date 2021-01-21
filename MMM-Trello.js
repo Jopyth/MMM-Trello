@@ -203,6 +203,14 @@ Module.register("MMM-Trello", {
         for (var id in checklistIDs) {
             if (checklistIDs[id] in this.checklistData) {
                 var checklist = this.checklistData[checklistIDs[id]];
+                checklist.checkItems.sort(function(a, b) {
+                    if (a.pos < b.pos) {
+                        return -1;
+                    } else if (a.pos > b.pos) {
+                        return 1;
+                    }
+                    return 0;
+                });
                 if (this.config.showChecklistTitle) {
                     var titleElement = document.createElement("div");
                     titleElement.className = "bright medium light";
