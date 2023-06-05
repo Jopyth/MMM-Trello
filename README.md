@@ -96,6 +96,13 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>true</code>
 			</td>
 		</tr>
+				<tr>
+			<td><code>fontSize</code></td>
+			<td>Change the size of the heather for the card.<br>
+				<br><b>Possible values:</b> <code>large</code> or <code>medium</code>
+				<br><b>Default value:</b> <code>large</code>
+			</td>
+		</tr>
     <tr>
       <td><code>showDescription</code></td>
       <td>Whether to show the description of the card.<br>
