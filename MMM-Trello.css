@@ -9,3 +9,11 @@
 .is-completed {
     text-decoration: line-through;
 }
+
+.medium {
+    font-size: 20px;
+}
+
+.large {
+    font-size: 30px;
+}
